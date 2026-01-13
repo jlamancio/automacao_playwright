@@ -31,7 +31,7 @@ test.describe('Suite for Login Functionality', () => {
         await page.getByPlaceholder('Password').fill('secret_sauce');
         await page.getByRole('button', { name: 'Login' }).click();
 
-        await expect(page.getByText(' Epic sadface: Username and password do not match any user in this service', { exact: true })).toBeVisible();
+        await expect(page.getByText('Epic sadface: Username and password do not match any user in this service', { exact: true })).toBeVisible();
 
     });
 
@@ -54,10 +54,10 @@ test.describe('Suite for Login Functionality', () => {
     });
 
     test('Login with empty User and valid Password', async ({ page }) => {
-        await page.getByPlaceholder('Password', 'secret_sauce');
+        await page.getByPlaceholder('Password').fill('secret_sauce');
         await page.getByRole('button', { name: 'Login' }).click();
 
-        await expect(page.getByText(' Epic sadface: Username is required', { exact: true })).toBeVisible();
+        await expect(page.getByText('Epic sadface: Username is required', { exact: true })).toBeVisible();
 
     });
 
