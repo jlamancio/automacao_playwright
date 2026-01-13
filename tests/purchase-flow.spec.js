@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
 
 test.describe('Checkout - End to End (E2E)', () => {
     test.beforeEach(async ({ page }) => {
