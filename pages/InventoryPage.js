@@ -4,20 +4,26 @@ export class InventoryPage {
     constructor(page) {
         this.page = page;
 
-        this.title = page.locator('.title');
-        this.addToCart = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
-        this.cartBadge = page.locator('.shopping_cart_badge');
-        this.cartLink = page.locator('.shopping_cart_link');
+        this.pageTitle = page.getByText('Products', { exact: true });
+        this.productAddButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+        this.cartItemsCounter = page.locator('.shopping_cart_badge');
+        this.cartIcon = page.locator('.shopping_cart_link');
     }
 
     async validateIsVisible() {
         await expect(this.page).toHaveURL(/inventory/);
-        await expect(this.title).toHaveText('Products', { exact: true });
-        await expect(this.title).toBeVisible();
+        await expect(this.pageTitle).toBeVisible();
     }
 
-    async addItemToCart() {
-        await this.addToCart.click();
+    async validateCartBadge(expectedCount) {
+        await expect(this.cartItemsCounter).toHaveText(expectedCount);
     }
 
+    async addProduct() {
+        await this.productAddButton.click();
+    }
+
+    async gotoCart() {
+        await this.cartIcon.click();
+    }
 }                                        

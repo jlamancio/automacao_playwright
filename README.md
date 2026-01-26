@@ -41,21 +41,21 @@ Após clonar o repositório instalar o framework e as dependências do projeto:
 * ✅CT8 - Login with empty User and Password
 
  ##
- ## 📁 Estrutura do Projeto
-        automacao-playwright/
-        │
-        ├── tests/
-        │   ├── login.spec.js
-        │
-        ├── playwright-report/        # Relatórios gerados automaticamente (após rodar os testes)
-        │
-        ├── test-results/             # Evidências de falhas (screenshots, traces, vídeos)
-        │
-        ├── playwright.config.js       # Configurações do Playwright
-        ├── package.json               # Dependências e scripts do projeto
-        ├── package-lock.json
-        └── README.md
+ ## 📁 Estrutura do Projeto:
 
+###   automacao_playwright/
+              ├── pages/
+              │   └── LoginPage.js       # Classe Page Object com seletores e métodos de login
+              ├── tests/
+              │   └── login.spec.js      # Suíte de testes da funcionalidade de Login
+              ├── .env                   # Variáveis de ambiente (URLs e Credenciais)
+              ├── .gitignore             # Arquivos ignorados (node_modules, .env, test-results)
+              ├── playwright.config.js   # Configurações globais do framework
+              └── package.json           # Dependências e scripts do projeto (ES Modules)
+
+              
+
+## 🏗️ Arquitetura do projeto:
 
 
  </div>

@@ -4,22 +4,22 @@ export class LoginPage {
     constructor(page) {
         this.page = page;
 
-        this.usernameInput = page.getByPlaceHolder('Username');
-        this.passwordInput = page.getByPlaceHolder('Password');
-        this.loginButton = page.getByRole('button', { name: 'Login' });   
-
+        this.usernameInput = page.getByPlaceholder('Username');
+        this.passwordInput = page.getByPlaceholder('Password');
+        this.loginButton = page.getByRole('button', { name: 'Login' });
+        this.errorMessageContainer = page.locator('.error-message-container');
     }
 
     async goto() {
         await this.page.goto('https://saucedemo.com/');
-
     }
 
     async login(username, password) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-        await this.loginButton.click();
-        
     }
 
+    async submit() {
+        await this.loginButton.click();
+    }
 }
