@@ -40,18 +40,23 @@ Após clonar o repositório instalar o framework e as dependências do projeto:
 * ✅CT7 - Login with valid User and empty Password
 * ✅CT8 - Login with empty User and Password
 
+## 🖥️Suite: Should complete a purchase starting from the inventory page:
+* ✅CT1 - Login with valid credentials.
  ##
  ## 📁 Estrutura do Projeto:
 
-###   automacao_playwright/
-              ├── pages/
-              │   └── LoginPage.js       # Classe Page Object com seletores e métodos de login
-              ├── tests/
-              │   └── login.spec.js      # Suíte de testes da funcionalidade de Login
-              ├── .env                   # Variáveis de ambiente (URLs e Credenciais)
-              ├── .gitignore             # Arquivos ignorados (node_modules, .env, test-results)
-              ├── playwright.config.js   # Configurações globais do framework
-              └── package.json           # Dependências e scripts do projeto (ES Modules)
+##  C:\Cursos\automacao_playwright
+    ├── examples
+    ├── LICENSE
+    ├── node_modules
+    ├── package-lock.json
+    ├── package.json
+    ├── pages
+    ├── playwright-report
+    ├── playwright.config.js
+    ├── README.md
+    ├── test-results
+    └── tests
 
               
 

@@ -20,7 +20,7 @@ test.describe('Checkout - End to End (E2E)', () => {
     });
 
     test('Should complete a purchase starting from the inventory page', async () => {
-        await test.step('Select a product and add it to the', async () => {
+        await test.step('Select a product and add it to the cart', async () => {
             await inventoryPage.validateIsVisible();
             await inventoryPage.addProduct();
             await inventoryPage.validateCartBadge('1');
@@ -28,7 +28,7 @@ test.describe('Checkout - End to End (E2E)', () => {
         });
 
         await test.step('Validate cart items and proceed to checkout', async () => {
-            
+
         });
     });
 });
