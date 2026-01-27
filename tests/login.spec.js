@@ -89,7 +89,7 @@ test.describe('Suite for Login Functionality', () => {
         );
     });
 
-    test.only('Login with locked out user', async ({ page }) => {
+    test('Login with locked out user', async ({ page }) => {
         await loginPage.login(process.env.LOCKED_USER, process.env.VALID_PASSWORD);
         await loginPage.submit();
         await expect(loginPage.errorMessageContainer).toBeVisible();
@@ -97,6 +97,6 @@ test.describe('Suite for Login Functionality', () => {
             'Epic sadface: Sorry, this user has been locked out.',
             { exact: true },
         );
-    })
+    });
 
-});
+})

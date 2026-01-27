@@ -7,6 +7,7 @@ export class CheckoutPage {
         this.firstNameInput = page.locator('[data-test="firstName"]');
         this.lastNameInput = page.locator('[data-test="lastName"]');
         this.postalCodeInput = page.locator('[data-test="postalCode"]');
+        this.errorMessageContainer = page.locator('.error-message-container');
         this.continueButton = page.locator('[data-test="continue"]');
         this.paymentInfo = page.locator('[data-test="payment-info-value"]');
         this.shippingInfo = page.locator('[data-test="shipping-info-value"]');
@@ -22,7 +23,7 @@ export class CheckoutPage {
 
     }
 
-    async validateCheckoutInformationPageOne() {
+    async validateInformationIsVisible() {
         await expect(this.page).toHaveURL(/checkout-step-one/);
         await expect(this.page.getByText('Checkout: Your Information', { exact: true })).toBeVisible();
 
@@ -35,39 +36,48 @@ export class CheckoutPage {
 
     }
 
-    async proceedToContinue() {
+    async procedToContinue() {
         await this.continueButton.click();
 
     }
 
-    async validateOverviewDetails() {
-         await expect(this.page).toHaveURL(/checkout-step-two/);
-         await expect(this.page.getByText('Checkout: Overview', { exact: true })).toBeVisible();
-         await expect(this.page.getByText('Payment Information:', { exact: true })).toBeVisible();
-         await expect(this.paymentInfo).toHaveText('SauceCard #31337');
-         await expect(this.page.getByText('Shipping Information:', { exact: true })).toBeVisible();
-         await expect(this.shippingInfo).toHaveText('Free Pony Express Delivery!');
-         await expect(this.page.getByText('Price Total', { exact: true })).toBeVisible();
-         await expect(this.subTotalLabel).toHaveText('Item total: $29.99');
-         await expect(this.taxLabel).toHaveText('Tax: $2.40');
-         await expect(this.totalLabel).toHaveText('Total: $32.39');
+    async validateOverviewIsVisible() {
+        await expect(this.page).toHaveURL(/checkout-step-two/);
+        await expect(this.page.getByText('Checkout: Overview', { exact: true })).toBeVisible();
+
+    }
+    async validateOverviewDetails(subtotal, tax, total) {
+
+        await expect(this.page.getByText('Payment Information:', { exact: true })).toBeVisible();
+        await expect(this.paymentInfo).toHaveText('SauceCard #31337');
+        await expect(this.page.getByText('Shipping Information:', { exact: true })).toBeVisible();
+        await expect(this.shippingInfo).toHaveText('Free Pony Express Delivery!');
+        await expect(this.page.getByText('Price Total', { exact: true })).toBeVisible();
+        await expect(this.subTotalLabel).toHaveText(subtotal);
+        await expect(this.taxLabel).toHaveText(tax);
+        await expect(this.totalLabel).toHaveText(total);
 
     }
 
-    async finalizeReviewDetails() {
+    async finishCheckout() {
         await this.finishButton.click();
+
+    }
+
+    async validateCompletePageIsVisible() {
+        await expect(this.page).toHaveURL(/checkout-complete/);
+        await expect(this.page.getByText('Checkout: Complete!', { exact: true })).toBeVisible();
 
     }
 
     async finalizePurchase() {
         const dispatchedMessage = 'Your order has been dispatched, and will arrive just as fast as the pony can get there!';
-        await expect(this.page).toHaveURL(/checkout-complete/);
-        await expect(this.page.getByText('Checkout: Complete!', { exact: true })).toBeVisible();
+
         await expect(this.thankYouMessage).toBeVisible();
-        await expect(this.thankYouMessage).toHaveText('Thank you for your order!', { exact: true});
+        await expect(this.thankYouMessage).toHaveText('Thank you for your order!', { exact: true });
         await expect(this.orderDispatchedMessage).toBeVisible();
-        await expect(this.orderDispatchedMessage).toHaveText(dispatchedMessage, { exact: true});
-         
+        await expect(this.orderDispatchedMessage).toHaveText(dispatchedMessage, { exact: true });
+
     }
 
     async logoutApplication() {

@@ -28,7 +28,7 @@ Após clonar o repositório instalar o framework e as dependências do projeto:
 * npx playwright test --project=chromium: Runs the tests only on Desktop Chrome.
 * npx playwright test example: Runs the tests in a specific file.
 * npx playwright codegen: Auto generate tests with Codegen.
-* npx playwright test --repeat-each=n: repeat each test N times. It's used to identify flaky tests.
+* npx playwright test --repeat-each=n: repeat each test N times. It's used to identify flaky test
 
 ## 🖥️Suite: Automation Login:
 * ✅CT1 - Login with valid credentials.
@@ -40,23 +40,30 @@ Após clonar o repositório instalar o framework e as dependências do projeto:
 * ✅CT7 - Login with valid User and empty Password
 * ✅CT8 - Login with empty User and Password
 
-## 🖥️Suite: Should complete a purchase starting from the inventory page:
-* ✅CT1 - Login with valid credentials.
- ##
+## 🖥️Suite: Checkout - End to End (E2E):
+* ✅CT1 - Should complete a purchase starting from the inventory page.
+
+
+## 🖥️Suite: Checkout Negative Scenarios:
+* ✅CT1 - Validate missing first name error message.
+* ✅CT2 - Validate missing last name error message.
+* ✅CT3 - Validate missing zip/postal code error message.
+
+
  ## 📁 Estrutura do Projeto:
 
 ##  C:\Cursos\automacao_playwright
-    ├── examples
-    ├── LICENSE
-    ├── node_modules
-    ├── package-lock.json
-    ├── package.json
-    ├── pages
-    ├── playwright-report
-    ├── playwright.config.js
-    ├── README.md
-    ├── test-results
-    └── tests
+                ├── examples
+                ├── LICENSE
+                ├── node_modules
+                ├── package-lock.json
+                ├── package.json
+                ├── pages
+                ├── playwright-report
+                ├── playwright.config.js
+                ├── README.md
+                ├── test-results
+                └── tests
 
               
 
